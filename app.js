@@ -1,13 +1,12 @@
 const express = require('express');
-// const mongoose = require('mongoose');
 const app = express();
 const PORT = 1000;
 
-
+//database and userSchema 
 require('./database');
 const User = require('./user');
 
-
+//middleware
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
@@ -18,7 +17,7 @@ app.get('/api/users',async(req,res)=>{
     res.send(data);
  })
 
- //perticiler user data read
+ //perticuler user data read
  app.get('/api/users/:_id',async(req,res)=>{
     let data = await User.find(req.params);
     res.send(data);
@@ -49,7 +48,7 @@ app.put("/api/users/:_id",async(req,res)=>{
 })
 
 
-//upadte single data
+//update single data
 app.patch('/api/users/:_id',async(req,res)=>{
    let data  = await User.findByIdAndUpdate(req.params._id,req.body);
    res.send(data);
