@@ -4,8 +4,8 @@ const app = express();
 const PORT = 1000;
 
 
-require('./config/database');
-const User = require('./module/user');
+require('./database');
+const User = require('./user');
 
 
 app.use(express.urlencoded({extended:false}));
